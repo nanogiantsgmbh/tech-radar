@@ -1,536 +1,131 @@
 <html>
 
 <head>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-<title>NanoGiants Tech Radar</title>
-<link rel="shortcut icon" href="https://nanogiants.de/favicon.ico">
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>NanoGiants Tech Radar</title>
+  <link rel="shortcut icon" href="https://nanogiants.de/favicon.ico">
 
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="radar.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="data.js"></script>
+  <script src="data_languages.js"></script>
+  <script src="data_devops.js"></script>
+  <script src="data_frameworks.js"></script>
+  <script src="data_architecture.js"></script>
+  <script src="radar.js"></script>
 
-<link rel="stylesheet" href="radar.css">
+  <link rel="stylesheet" href="radar.css">
 </head>
 
 <body>
 
-<svg id="radar"></svg>
+  <svg id="radar"></svg>
 
-<script>
-radar_visualization({
-  svg_id: "radar",
-  width: 1450,
-  height: 1000,
-  colors: {
-    background: "#19194B",
-    grid: "#bbb",
-    inactive: "#ddd"
-  },
-  title: "NanoGiants Tech Radar — 2021.01",
-  quadrants: [
-    { name: "Languages" },
-    { name: "Dev Ops" },
-    { name: "Frameworks" },
-    { name: "Architecture" }
-  ],
-  rings: [
-    { name: "ADOPT", color: "#93c47d" },
-    { name: "TRIAL", color: "#93d2c2" },
-    { name: "ASSESS", color: "#fbdb84" },
-    { name: "HOLD", color: "#efafa9" }
-  ],
-  print_layout: true,
-  // zoomed_quadrant: 0,
-  //ENTRIES
-  entries: [
-      {
-        quadrant: 3,
-        ring: 0,
-        label: "MVVM",
-        active: false,
-        link: "",
-        moved: 0
+  <script>
+    var entries = [];
+
+    entries = entries.concat(languageEntries);
+    entries = entries.concat(devOpsEntries);
+    entries = entries.concat(frameworksEntries);
+    entries = entries.concat(architectureEntries);
+
+    radar_visualization({
+      svg_id: "radar",
+      width: width,
+      height: width / 1.45,
+      colors: {
+        background: "#19194a",
+        grid: "#bbb",
+        inactive: "#ddd"
       },
-      {
-        quadrant: 3,
-        ring: 0,
-        label: "Coordinator",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 0,
-        label: "MVP",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 1,
-        label: "MVI",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 2,
-        label: "MMVM + Redux",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 3,
-        ring: 3,
-        label: "MVC",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
-        label: "UIKit",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
-        label: "Alamofire",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
-        label: "React",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
-        label: "Vue",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
-        label: "React-Native",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
-        label: "NestJS",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
-        label: "Express",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
-        label: "Gradle",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
-        label: "Dagger",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
-        label: "RxJava2",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 0,
-        label: "OKHttp",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 1,
-        label: "Angular > 2",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 1,
-        label: "Atributika",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 1,
-        label: "KMM",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 1,
-        label: "Jetpack Compose",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 2,
-        label: "SwiftUI",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 1,
-        label: "Resolver",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 2,
-        label: "Combine",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 1,
-        label: "RxSwift",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 1,
-        label: "Coroutines",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 3,
-        label: "Angular 1",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 3,
-        label: "Backbone JS",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 3,
-        label: "Cordova",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 0,
-        label: "Bitrise",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 0,
-        label: "AppCenter",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 0,
-        label: "Github",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 0,
-        label: "Postman",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 0,
-        label: "TestFlight",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 0,
-        label: "AWS",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 0,
-        label: "Travis",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 0,
-        label: "Docker",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 1,
-        label: "Github Actions",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 0,
-        label: "Swift Package Manager",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 1,
-        label: "Danger",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 3,
-        label: "Sonarqube",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 1,
-        label: "Sonarcloud",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 3,
-        label: "Carthage",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 1,
-        ring: 3,
-        label: "Bitbucket",
-        active: false,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 0,
-        label: "Swift",
-        active: true,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 0,
-        label: "TypeScript",
-        active: true,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 3,
-        label: "JavaScript",
-        active: true,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 0,
-        label: "HTML5",
-        active: true,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 0,
-        label: "Kotlin",
-        active: true,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 0,
-        label: "Groovy",
-        active: true,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 0,
-        label: "CSS3",
-        active: true,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 2,
-        label: "WASM",
-        active: true,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 2,
-        ring: 2,
-        label: "deno",
-        active: true,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 1,
-        label: "PHP",
-        active: true,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 3,
-        label: "Objective-C",
-        active: true,
-        link: "",
-        moved: 0
-      },
-      {
-        quadrant: 0,
-        ring: 2,
-        label: "Java (Backend)",
-        active: true,
-        link: "",
-        moved: 0
+      title: "NanoGiants Tech Radar — 2021.01",
+      quadrants: [
+        { name: "Languages" },
+        { name: "Dev Ops" },
+        { name: "Frameworks" },
+        { name: "Architecture" }
+      ],
+      rings: [
+        { name: "ADOPT", color: "#93c47d" },
+        { name: "TRIAL", color: "#93d2c2" },
+        { name: "ASSESS", color: "#fbdb84" },
+        { name: "HOLD", color: "#efafa9" }
+      ],
+      print_layout: true,
+      entries: entries
+    });
+  </script>
+
+  <table>
+    <tr>
+      <td>
+
+        <h3>What is the Tech Radar?</h3>
+
+        <p>
+          Unser Tech Radar ist eine graphische Auflistung von Technologien, Frameworks, Programmiersprachen und Tools,
+          die wir für unsere Arbeit verwenden oder bewusst nicht verwenden. Damit gibt der Tech Radar einen schnellen
+          umfassenden Überblick über die Technologie-Landschaft der NanoGiants. Jeder Eintrag im Tech Radar ist einer
+          bestimmten Phase zugeordnet:
+        </p>
+
+        <ul>
+          <li><strong>ADOPT</strong> &mdash; Einträge in dieser Phase haben sich bei uns als bewährt herausgestellt und
+            sind generell für die Verwendung zu empfehlen.</li>
+          <li><strong>TRIAL</strong> &mdash; Einträge in dieser Phase haben gezeigt, dass sie für Use Cases im
+            Produktiveinsatz geeignet sind. Tendentiell haben diese Technologien etwas größeres Risiko bzwl
+            Einschränkungen als ADOPT.</li>
+          <li><strong>ASSESS</strong> &mdash; Einträge in dieser Phase sehen wir für uns als sehr vielversprechend an.
+            Daher ist es entscheidend, dieses Potential in Experimenten zu validieren und in TRIAL bzw. ADOPT zu
+            überführen</li>
+          <li><strong>HOLD</strong> &mdash; Einträge in diese Phase bewerten wir als nicht tauglich für unseren Einsatz.
+            Das bezieht sich auf neue Projekte. Es kann dennoch sinnvoll sein, alte Projekte auf Basis von Technologien,
+            die wir als HOLD klassifizieren, zu migrieren.</li>
+        </ul>
+
+      </td>
+      <td>
+
+        <h3>What is the purpose?</h3>
+
+        <p>
+          “Wir glaube an eine Welt in der unsere Technologie hilft Menschen zu wachsen. Insbesondere wollen wir
+          zukunftsweisende Technologien dem Citizen Developer zugänglich machen” - Purpose der NanoGiants. Um diesen
+          Purpose mit Leben füllen zu können, müssen wir mit Technologien, digitalen Produkten Werte schaffen. Zudem
+          gibt unser BHAG (und daraus abgeleitete Jahresziele 1Y-HAG, 3Y-HAG) ein konstantes Wachstum vor. Um in Folge
+          dieser Skalierung, nicht die Übersicht zu verlieren und handlungsfähig zu bleiben ist ein Tool zu entwickeln,
+          welches uns dabei unterstützt die richtigen Werkzeuge für unsere Arbeit auszuwählen.
+        </p>
+
+      </td>
+    </tr>
+  </table>
+
+  <script>
+    function centerPage() {
+      var el = document.getElementsByTagName('body')[0];
+      if (el) {
+        el.style = {};
+        el.style.margin = "auto";
+        el.style.maxWidth = width;
+
+        console.log("hfsjfhdkj", el.style);
       }
-  ]
-  //ENTRIES
-});
-</script>
+    }
 
-<table>
-<tr>
-<td>
+    centerPage();
+  </script>
 
-<h3>What is the Tech Radar?</h3>
-
-<p>
-  Unser Tech Radar ist eine graphische Auflistung von Technologien, Frameworks, Programmiersprachen und Tools, die wir für unsere Arbeit verwenden oder bewusst nicht verwenden. Damit gibt der Tech Radar einen schnellen umfassenden Überblick über die Technologie-Landschaft der NanoGiants. Jeder Eintrag im Tech Radar ist einer bestimmten Phase zugeordnet:
-</p>
-
-<ul>
-<li><strong>ADOPT</strong> &mdash; Einträge in dieser Phase haben sich bei uns als bewährt herausgestellt und sind generell für die Verwendung zu empfehlen.</li>
-<li><strong>TRIAL</strong> &mdash; Einträge in dieser Phase haben gezeigt, dass sie für Use Cases im Produktiveinsatz geeignet sind. Tendentiell haben diese Technologien etwas größeres Risiko bzwl Einschränkungen als ADOPT.</li>
-<li><strong>ASSESS</strong> &mdash; Einträge in dieser Phase sehen wir für uns als sehr vielversprechend an. Daher ist es entscheidend, dieses Potential in Experimenten zu validieren und in TRIAL bzw. ADOPT zu überführen</li>
-<li><strong>HOLD</strong> &mdash; Einträge in diese Phase bewerten wir als nicht tauglich für unseren Einsatz. Das bezieht sich auf neue Projekte. Es kann dennoch sinnvoll sein, alte Projekte auf Basis von Technologien, die wir als HOLD klassifizieren, zu migrieren.</li>
-</ul>
-
-</td><td>
-
-<h3>What is the purpose?</h3>
-
-<p>
-  “Wir glaube an eine Welt in der unsere Technologie hilft Menschen zu wachsen. Insbesondere wollen wir zukunftsweisende Technologien dem Citizen Developer zugänglich machen” - Purpose der NanoGiants. Um diesen Purpose mit Leben füllen zu können, müssen wir mit Technologien, digitalen Produkten Werte schaffen. Zudem gibt unser BHAG (und daraus abgeleitete Jahresziele 1Y-HAG, 3Y-HAG) ein konstantes Wachstum vor. Um in Folge dieser Skalierung, nicht die Übersicht zu verlieren und handlungsfähig zu bleiben ist ein Tool zu entwickeln, welches uns dabei unterstützt die richtigen Werkzeuge für unsere Arbeit auszuwählen.
-</p>
-
-</td></tr>
-</table>
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-105375141-2', 'auto');
-  ga('send', 'pageview');
-</script>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-105375141-2', 'auto');
+    ga('send', 'pageview');
+  </script>
 
 </body>
+
 </html>

@@ -1,7 +1,9 @@
 # Motivation
 
-At [Zalando](http://zalando.de), we maintain a [public Tech
-Radar](http://zalando.github.io/tech-radar/) to help our engineering teams
+This is a fork of the Zalando tech radar (see http://zalando.github.io/tech-radar/). Thanks for sharing and giving others the chance to host their own tech radar with ease!
+
+At [NanoGiants](https://nanogiants.de), we maintain a [public Tech
+Radar](http://techradar.nanogiants.de) to help our engineering teams
 align on technology choices. It is based on the [pioneering work
 by ThoughtWorks](https://www.thoughtworks.com/radar).
 
@@ -15,7 +17,12 @@ Feel free to use and adapt it for your own purposes.
 
 ```html
 <script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="http://zalando.github.io/tech-radar/release/radar-0.5.js"></script>
+<script src="data.js"></script>
+<script src="data_languages.js"></script>
+<script src="data_devops.js"></script>
+<script src="data_frameworks.js"></script>
+<script src="data_architecture.js"></script>
+<script src="radar.js"></script>
 ```
 
 2. insert an empty `svg` tag:
@@ -64,10 +71,19 @@ radar_visualization({
 });
 ```
 
-Entries are positioned automatically so that they don't overlap.
+Entries are loaded from files called `data_RING`, where `RING` is the name of the corresponding ring (i.e. architecture, devops, frameworks, languages), such that entries can be easily maintained. The data structure of an entry looks like this:
 
-As a working example, you can check out `docs/index.html` &mdash; the source of our [public Tech
-Radar](http://zalando.github.io/tech-radar/).
+```js 
+{
+  label: "Some Entry",
+  ring: 2,              // 0,1,2,3 (starting from inside)
+  moved: -1             // -1 = moved out (triangle pointing down)
+                        //  0 = not moved (circle)
+                        //  1 = moved in  (triangle pointing up)
+}
+```
+
+Entries are positioned automatically so that they don't overlap.
 
 ## Local Development
 
@@ -94,7 +110,7 @@ http://localhost:3000/
 ```
 The MIT License (MIT)
 
-Copyright (c) 2017 Zalando SE
+Copyright (c) 2021 NanoGiants GmbH
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
