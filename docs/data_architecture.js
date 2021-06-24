@@ -54,6 +54,11 @@ var architectureEntries = [
         label: "Webflow",
         active: false,
         moved: 1
+    },{
+        ring: ADOPT,
+        label: "Storybook",
+        active: false,
+        moved: 1
     },
 ]
     .map(entry => {
