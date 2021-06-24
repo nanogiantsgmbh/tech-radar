@@ -62,7 +62,7 @@ var frameworksEntries = [
     },
     {
         ring: ADOPT,
-        label: "RxJava2",
+        label: "RxJava3",
         active: false,        
         moved: 0
     },
@@ -109,16 +109,16 @@ var frameworksEntries = [
         moved: 0
     },
     {
-        ring: ASSESS,
+        ring: TRIAL,
         label: "Combine",
         active: false,        
-        moved: 0
+        moved: 1
     },
     {
-        ring: TRIAL,
+        ring: HOLD,
         label: "RxSwift",
         active: false,        
-        moved: 0
+        moved: -1
     },
     {
         ring: TRIAL,

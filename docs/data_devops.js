@@ -72,7 +72,7 @@ var devOpsEntries = [
         moved: 0
     },
     {
-        ring: TRIAL,
+        ring: ADOPT,
         label: "Sonarcloud",
         active: false,        
         moved: 0
@@ -88,6 +88,12 @@ var devOpsEntries = [
         label: "Bitbucket",
         active: false,        
         moved: 0
+    },
+    {
+        ring: TRIAL,
+        label: "Azure",
+        active: false,        
+        moved: 1
     }]
     .map(entry => {
         entry.quadrant = DEV_OPS;

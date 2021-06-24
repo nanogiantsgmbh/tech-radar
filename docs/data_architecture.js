@@ -1,4 +1,5 @@
-var architectureEntries = [{
+var architectureEntries = [
+    {
     ring: ADOPT,
     label: "MVVM",
     active: false,
@@ -33,7 +34,8 @@ var architectureEntries = [{
     label: "MVC",
     active: false,
     moved: 0
-}]
+}
+]
     .map(entry => {
         entry.quadrant = ARCHITECTURE;
         return entry;
