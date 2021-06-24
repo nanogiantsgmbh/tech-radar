@@ -49,6 +49,11 @@ var architectureEntries = [
         label: "Bubble.io",
         active: false,
         moved: 1
+    },{
+        ring: ADOPT,
+        label: "Webflow",
+        active: false,
+        moved: 1
     },
 ]
     .map(entry => {
