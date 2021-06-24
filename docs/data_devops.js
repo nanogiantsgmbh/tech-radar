@@ -17,12 +17,7 @@ var devOpsEntries = [
         active: false,        
         moved: 0
     },
-    {
-        ring: ADOPT,
-        label: "Postman",
-        active: false,        
-        moved: 0
-    },
+    
     {
         ring: ADOPT,
         label: "TestFlight",

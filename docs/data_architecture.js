@@ -49,16 +49,22 @@ var architectureEntries = [
         label: "Bubble.io",
         active: false,
         moved: 1
-    },{
+    }, {
         ring: ADOPT,
         label: "Webflow",
         active: false,
         moved: 1
-    },{
+    }, {
         ring: ADOPT,
         label: "Storybook",
         active: false,
         moved: 1
+    },
+    {
+        ring: ADOPT,
+        label: "Postman",
+        active: false,
+        moved: 0
     },
 ]
     .map(entry => {
