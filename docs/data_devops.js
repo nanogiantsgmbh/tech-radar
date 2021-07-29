@@ -88,7 +88,7 @@ var devOpsEntries = [
         ring: TRIAL,
         label: "Azure",
         active: false,        
-        moved: 1
+        moved: 0
     }]
     .map(entry => {
         entry.quadrant = DEV_OPS;

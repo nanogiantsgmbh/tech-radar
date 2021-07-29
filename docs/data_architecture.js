@@ -61,10 +61,10 @@ var architectureEntries = [
         moved: 1
     },
     {
-        ring: ADOPT,
-        label: "Postman",
+        ring: TRIAL,
+        label: "AppWrite",
         active: false,
-        moved: 0
+        moved: 1
     },
 ]
     .map(entry => {

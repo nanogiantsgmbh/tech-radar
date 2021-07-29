@@ -100,7 +100,7 @@ var frameworksEntries = [
         ring: TRIAL,
         label: "SwiftUI",
         active: false,        
-        moved: 1
+        moved: 0
     },
     {
         ring: TRIAL,
@@ -112,7 +112,7 @@ var frameworksEntries = [
         ring: TRIAL,
         label: "Combine",
         active: false,        
-        moved: 1
+        moved: 0
     },
     {
         ring: HOLD,
@@ -148,13 +148,13 @@ var frameworksEntries = [
         ring: HOLD,
         label: "Spring Boot",
         active: false,        
-        moved: 1
+        moved: 0
     },
     {
         ring: ASSESS,
         label: "GPT-3",
         active: false,        
-        moved: 1
+        moved: 0
     }]
     .map(entry => {
         entry.quadrant = FRAMEWORKS;
