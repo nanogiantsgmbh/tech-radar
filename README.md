@@ -1,5 +1,7 @@
 # Motivation
 
+**Deprecated: Use https://github.com/nanogiantsgmbh/techradar instead**
+
 This is a fork of the Zalando tech radar (see http://zalando.github.io/tech-radar/). Thanks for sharing and giving others the chance to host their own tech radar with ease!
 
 At [NanoGiants](https://nanogiants.de), we maintain a [public Tech
